@@ -18,13 +18,14 @@ import com.example.unicanteen.models.OrderModel;
 
 import java.util.List;
 
-public class AdminOrderAdapter extends RecyclerView.Adapter<AdminOrderAdapter.ViewHolder> {
+public class AdminOrderAdapter
+        extends RecyclerView.Adapter<AdminOrderAdapter.ViewHolder> {
 
     private final Context context;
     private final List<OrderModel> orderList;
     private OnItemClickListener listener;
 
-    // 🔥 CLICK LISTENER INTERFACE (Maintaining your logic for Status Updates)
+    // 🔥 Status click listener
     public interface OnItemClickListener {
         void onItemClick(OrderModel order);
     }
@@ -40,35 +41,43 @@ public class AdminOrderAdapter extends RecyclerView.Adapter<AdminOrderAdapter.Vi
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        // Using your specific item layout
-        View view = LayoutInflater.from(context).inflate(R.layout.item_order_history, parent, false);
+    public ViewHolder onCreateViewHolder(
+            @NonNull ViewGroup parent, int viewType) {
+
+        View view = LayoutInflater.from(context)
+                .inflate(R.layout.item_order_history, parent, false);
+
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(
+            @NonNull ViewHolder holder, int position) {
+
         OrderModel order = orderList.get(position);
 
-        // Setting data using your existing model fields
         holder.txtOrderId.setText(order.getOrderId());
         holder.txtItems.setText(order.getSummary());
         holder.txtTotal.setText("₹ " + order.getTotalAmount());
         holder.txtDateTime.setText(order.getDateTime());
         holder.txtStatus.setText("Status: " + order.getStatus());
 
-        // 📞 Maintaining your contact display logic
-        if (order.getContact() != null) {
+        // 📞 Contact
+        if (order.getContact() != null && !order.getContact().isEmpty()) {
             holder.txtContact.setText("📞 " + order.getContact());
         } else {
             holder.txtContact.setText("📞 N/A");
         }
 
-        // ☎️ CALL USER BUTTON (Maintaining ACTION_DIAL intent logic)
+        // ☎️ CALL USER BUTTON (SAFE)
         holder.btnCallUser.setOnClickListener(v -> {
             String phone = order.getContact();
             if (phone == null || phone.isEmpty()) {
-                Toast.makeText(context, "Contact number not available", Toast.LENGTH_SHORT).show();
+                Toast.makeText(
+                        context,
+                        "Contact number not available",
+                        Toast.LENGTH_SHORT
+                ).show();
                 return;
             }
 
@@ -77,7 +86,7 @@ public class AdminOrderAdapter extends RecyclerView.Adapter<AdminOrderAdapter.Vi
             context.startActivity(intent);
         });
 
-        // 🔥 ITEM CLICK (Maintaining logic for Status Change Dialog)
+        // 🔥 Card click (status update dialog etc.)
         holder.itemView.setOnClickListener(v -> {
             if (listener != null) {
                 listener.onItemClick(order);
@@ -90,20 +99,26 @@ public class AdminOrderAdapter extends RecyclerView.Adapter<AdminOrderAdapter.Vi
         return orderList.size();
     }
 
+    // 🔥 ViewHolder
     static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView txtOrderId, txtItems, txtTotal, txtDateTime, txtStatus, txtContact;
+
+        TextView txtOrderId, txtItems, txtTotal,
+                txtDateTime, txtStatus, txtContact;
+
         Button btnCallUser;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            // Binding your IDs from the premium XML
-            txtOrderId = itemView.findViewById(R.id.txtOrderId);
-            txtItems = itemView.findViewById(R.id.txtOrderItems);
-            txtTotal = itemView.findViewById(R.id.txtOrderTotal);
-            txtDateTime = itemView.findViewById(R.id.txtOrderDateTime);
-            txtStatus = itemView.findViewById(R.id.txtOrderStatus);
-            txtContact = itemView.findViewById(R.id.txtContact);
 
+            txtOrderId   = itemView.findViewById(R.id.txtOrderId);
+            txtItems     = itemView.findViewById(R.id.txtOrderItems);
+            txtTotal     = itemView.findViewById(R.id.txtOrderTotal);
+            txtDateTime  = itemView.findViewById(R.id.txtOrderDateTime);
+            txtStatus    = itemView.findViewById(R.id.txtOrderStatus);
+            txtContact   = itemView.findViewById(R.id.txtContact);
+
+            // 🔥 THIS LINE WAS MISSING (CAUSE OF CRASH)
+            btnCallUser  = itemView.findViewById(R.id.btnCallUser);
         }
     }
 }

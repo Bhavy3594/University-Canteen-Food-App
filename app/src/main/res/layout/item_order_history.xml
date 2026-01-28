@@ -16,6 +16,7 @@
         android:orientation="vertical"
         android:padding="20dp">
 
+        <!-- Top Row -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -48,6 +49,7 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
+        <!-- Items -->
         <TextView
             android:id="@+id/txtOrderItems"
             android:layout_width="match_parent"
@@ -63,6 +65,7 @@
             android:layout_marginVertical="12dp"
             android:background="#F0F0F0" />
 
+        <!-- Total + Contact -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -100,21 +103,39 @@
                 android:textColor="#333333"
                 android:textSize="13sp"
                 android:fontFamily="sans-serif-medium"
-                android:text="Contact: 0000000000" />
+                android:text="📞 0000000000" />
         </LinearLayout>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnCancelOrder"
-            style="@style/Widget.Material3.Button.TonalButton"
+        <!-- 🔥 ACTION BUTTONS -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:layout_marginTop="16dp"
-            android:text="Cancel Order"
-            android:textAllCaps="false"
-            android:textStyle="bold"
-            app:backgroundTint="#FFEBEE"
-            android:textColor="#D32F2F"
-            app:cornerRadius="12dp" />
+            android:gravity="end">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCallUser"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Call User"
+                android:textAllCaps="false"
+                app:cornerRadius="12dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCancelOrder"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Cancel Order"
+                android:textAllCaps="false"
+                android:textStyle="bold"
+                app:backgroundTint="#FFEBEE"
+                android:textColor="#D32F2F"
+                app:cornerRadius="12dp" />
+        </LinearLayout>
 
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

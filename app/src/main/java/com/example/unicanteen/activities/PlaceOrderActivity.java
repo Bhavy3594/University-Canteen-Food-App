@@ -17,12 +17,15 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 public class PlaceOrderActivity extends AppCompatActivity {
 
     private Button btnConfirmOrder, btnCancelOrder;
     private TextView txtSummary, txtTotal;
+
     private String location, contact, payment;
 
     @Override
@@ -54,6 +57,13 @@ public class PlaceOrderActivity extends AppCompatActivity {
     }
 
     private void generateOrderSummary() {
+
+        if (CartManager.getCartItems().isEmpty()) {
+            Toast.makeText(this, "Cart is empty", Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
+
         StringBuilder summary = new StringBuilder();
 
         for (CartItemModel item : CartManager.getCartItems()) {
@@ -67,18 +77,13 @@ public class PlaceOrderActivity extends AppCompatActivity {
         summary.append("\n📞 Contact: ").append(contact);
         summary.append("\n💳 Payment: ").append(payment);
 
-        int total = CartManager.getTotalAmount();
         txtSummary.setText(summary.toString());
-
-        // UPDATED: Removed "Total Amount: " prefix
-        txtTotal.setText("₹" + total);
+        txtTotal.setText("₹" + CartManager.getTotalAmount());
     }
 
     private void setupClickListeners() {
-        int total = CartManager.getTotalAmount();
-        String summaryText = txtSummary.getText().toString();
 
-        btnConfirmOrder.setOnClickListener(v -> placeOrder(total, summaryText));
+        btnConfirmOrder.setOnClickListener(v -> placeOrder());
 
         btnCancelOrder.setOnClickListener(v -> {
             Toast.makeText(this, "Order cancelled", Toast.LENGTH_SHORT).show();
@@ -86,7 +91,8 @@ public class PlaceOrderActivity extends AppCompatActivity {
         });
     }
 
-    private void placeOrder(int total, String summary) {
+    private void placeOrder() {
+
         if (FirebaseAuth.getInstance().getCurrentUser() == null) {
             Toast.makeText(this, "Session expired. Login again.", Toast.LENGTH_LONG).show();
             startActivity(new Intent(this, MainActivity.class));
@@ -102,33 +108,59 @@ public class PlaceOrderActivity extends AppCompatActivity {
                 Locale.getDefault()
         ).format(new Date());
 
-        DatabaseReference ref = FirebaseDatabase.getInstance()
-                .getReference("orders")
-                .child(uid)
-                .child(orderId);
+        int total = CartManager.getTotalAmount();
 
-        ref.child("orderId").setValue(orderId);
-        ref.child("summary").setValue(summary);
-        ref.child("totalAmount").setValue(total);
-        ref.child("dateTime").setValue(dateTime);
-        ref.child("status").setValue("Pending");
-        ref.child("location").setValue(location);
-        ref.child("contact").setValue(contact);
-        ref.child("payment").setValue(payment);
+        // 🔥 Order object
+        Map<String, Object> orderMap = new HashMap<>();
+        orderMap.put("orderId", orderId);
+        orderMap.put("userId", uid);
+        orderMap.put("summary", txtSummary.getText().toString());
+        orderMap.put("totalAmount", total);
+        orderMap.put("dateTime", dateTime);
+        orderMap.put("status", "Pending");
+        orderMap.put("location", location);
+        orderMap.put("contact", contact);
+        orderMap.put("payment", payment);
 
-        FirebaseDatabase.getInstance()
-                .getReference("users")
-                .child(uid)
-                .child("contact")
-                .setValue(contact);
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
 
-        CartManager.clearCart();
+        // ✅ Save for ADMIN (all orders)
+        rootRef.child("orders")
+                .child(orderId)
+                .setValue(orderMap)
+                .addOnSuccessListener(unused -> {
 
-        Toast.makeText(this, "Order placed successfully!", Toast.LENGTH_SHORT).show();
+                    // ✅ Save for USER (history)
+                    rootRef.child("userOrders")
+                            .child(uid)
+                            .child(orderId)
+                            .setValue(orderMap);
 
-        Intent intent = new Intent(this, DashboardActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        finish();
+                    CartManager.clearCart();
+
+                    Toast.makeText(
+                            PlaceOrderActivity.this,
+                            "Order placed successfully!",
+                            Toast.LENGTH_SHORT
+                    ).show();
+
+                    Intent intent = new Intent(
+                            PlaceOrderActivity.this,
+                            DashboardActivity.class
+                    );
+                    intent.setFlags(
+                            Intent.FLAG_ACTIVITY_NEW_TASK |
+                                    Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    );
+                    startActivity(intent);
+                    finish();
+                })
+                .addOnFailureListener(e ->
+                        Toast.makeText(
+                                PlaceOrderActivity.this,
+                                "Failed: " + e.getMessage(),
+                                Toast.LENGTH_LONG
+                        ).show()
+                );
     }
 }
