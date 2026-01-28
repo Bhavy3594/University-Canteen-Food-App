@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "802434195896",
+    "project_id": "unicanteen-3bd87",
+    "storage_bucket": "unicanteen-3bd87.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:802434195896:android:0485029f8da6d38affef4d",
+        "android_client_info": {
+          "package_name": "com.example.unicanteen"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOLLGTayzzHyYIYc6bW2-hSQamfovx8OU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

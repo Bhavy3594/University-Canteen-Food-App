@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F4F7FC">
+
+    <!-- HEADER -->
+    <View
+        android:id="@+id/backgroundHeader"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:background="#003366" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="UniCanteen"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textAllCaps="true"
+            android:letterSpacing="0.1"
+            android:fontFamily="sans-serif-medium" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Admin Control"
+            android:textColor="#FFFFFF"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-black" />
+
+        <!-- CARD -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="8dp"
+            app:cardBackgroundColor="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Quick Actions"
+                    android:textColor="#666666"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="20dp" />
+
+                <!-- VIEW ORDERS -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnAdminOrders"
+                    android:layout_width="match_parent"
+                    android:layout_height="75dp"
+                    android:text="View Live Orders"
+                    android:textAllCaps="false"
+                    android:textSize="16sp"
+                    android:textColor="#003366"
+                    app:icon="@android:drawable/ic_menu_today"
+                    app:iconTint="#003366"
+                    app:iconSize="28dp"
+                    app:cornerRadius="16dp"
+                    app:backgroundTint="#E3F2FD" />
+
+                <!-- MANAGE ITEMS -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnAdminItems"
+                    android:layout_width="match_parent"
+                    android:layout_height="75dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Manage Menu Items"
+                    android:textAllCaps="false"
+                    android:textSize="16sp"
+                    android:textColor="#003366"
+                    app:icon="@android:drawable/ic_menu_edit"
+                    app:iconTint="#003366"
+                    app:iconSize="28dp"
+                    app:cornerRadius="16dp"
+                    app:backgroundTint="#E3F2FD" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <!-- LOGOUT -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAdminLogout"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Secure Logout"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#D32F2F"
+            app:icon="@android:drawable/ic_lock_power_off"
+            app:iconTint="#D32F2F"
+            app:rippleColor="#33FF0000" />
+
+    </LinearLayout>
+
+</RelativeLayout>
