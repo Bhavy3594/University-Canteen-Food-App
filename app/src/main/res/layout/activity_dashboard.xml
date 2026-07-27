@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F4F7FC"
+    android:background="@color/bg_light"
     android:fillViewport="true">
 
     <LinearLayout
@@ -11,202 +11,352 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <!-- Hero Header with Brand & Logout -->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#003366"
+            android:background="@drawable/bg_gradient_header"
             android:paddingHorizontal="24dp"
-            android:paddingTop="50dp"
-            android:paddingBottom="40dp"
-            android:elevation="12dp">
+            android:paddingTop="48dp"
+            android:paddingBottom="36dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-                <TextView
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="14dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="4dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="#3310B981"
+                    app:cardBackgroundColor="#161E2E">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="4dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_canteen_logo" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="WELCOME TO"
-                    android:textColor="#B0BEC5"
-                    android:textSize="12sp"
-                    android:letterSpacing="0.15"
-                    android:fontFamily="sans-serif-medium" />
+                    android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="UniCanteen"
-                    android:textColor="#FFFFFF"
-                    android:textSize="32sp"
-                    android:fontFamily="sans-serif-black" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="WELCOME TO CANTEEN"
+                        android:textColor="#CBD5E1"
+                        android:textSize="11sp"
+                        android:letterSpacing="0.14"
+                        android:fontFamily="sans-serif-bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="UniCanteen"
+                        android:textColor="#FFFFFF"
+                        android:textSize="28sp"
+                        android:fontFamily="sans-serif-black" />
+                </LinearLayout>
             </LinearLayout>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnLogout"
                 style="@style/Widget.Material3.Button.IconButton"
-                android:layout_width="54dp"
-                android:layout_height="54dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:padding="0dp"
-                app:icon="@android:drawable/ic_lock_power_off"
+                app:icon="@android:drawable/ic_menu_close_clear_cancel"
                 app:iconGravity="textStart"
                 app:iconTint="#FFFFFF"
-                app:backgroundTint="#22FFFFFF"
+                app:backgroundTint="#3310B981"
                 app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
         </RelativeLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
+        <!-- Promo Banner Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
-            android:text="Select Your Floor"
-            android:textColor="#333333"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:fontFamily="sans-serif-medium" />
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="-24dp"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="10dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/border_subtle"
+            app:cardBackgroundColor="@color/bg_card">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="20dp"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="⚡ 10-Min Floor Delivery"
+                        android:textColor="@color/primary_blue"
+                        android:textSize="13sp"
+                        android:fontFamily="sans-serif-bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="Freshly Made Snacks &amp; Meals"
+                        android:textColor="@color/text_main"
+                        android:textSize="17sp"
+                        android:fontFamily="sans-serif-black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="Select your floor level to view available items"
+                        android:textColor="@color/text_sub"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/ic_food_item"
+                    app:tint="@color/primary_blue"
+                    android:layout_marginStart="12dp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Floor Selection Section Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Explore Canteen Floors"
+                android:textColor="@color/text_main"
+                android:textSize="20sp"
+                android:fontFamily="sans-serif-black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Choose floor location to browse menus with images"
+                android:textColor="@color/text_sub"
+                android:textSize="13sp"
+                android:layout_marginTop="2dp" />
+        </LinearLayout>
+
+        <!-- Floor Grid -->
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:columnCount="2"
-            android:padding="16dp"
+            android:padding="12dp"
             android:alignmentMode="alignMargins">
 
+            <!-- Floor 1 Card -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="0dp"
                 android:layout_height="140dp"
                 android:layout_columnWeight="1"
                 android:layout_margin="8dp"
-                app:cardCornerRadius="24dp"
-                app:cardElevation="6dp">
+                app:cardCornerRadius="22dp"
+                app:cardElevation="6dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/border_subtle"
+                app:cardBackgroundColor="@color/bg_card">
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/floor1"
                     style="@style/Widget.Material3.Button.TextButton"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Floor 1"
-                    android:textColor="#003366"
-                    app:icon="@android:drawable/ic_menu_directions"
+                    android:text="Floor 1\n(Samosa &amp; Tea)"
+                    android:textColor="@color/primary_blue"
+                    android:textSize="15sp"
+                    android:fontFamily="sans-serif-bold"
+                    app:icon="@drawable/ic_floor_badge"
+                    app:iconTint="@color/primary_blue"
                     app:iconGravity="top"
                     app:iconSize="36dp" />
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- Floor 2 Card -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="0dp"
                 android:layout_height="140dp"
                 android:layout_columnWeight="1"
                 android:layout_margin="8dp"
-                app:cardCornerRadius="24dp"
-                app:cardElevation="6dp">
+                app:cardCornerRadius="22dp"
+                app:cardElevation="6dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/border_subtle"
+                app:cardBackgroundColor="@color/bg_card">
+
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/floor2"
                     style="@style/Widget.Material3.Button.TextButton"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Floor 2"
-                    android:textColor="#003366"
-                    app:icon="@android:drawable/ic_menu_directions"
+                    android:text="Floor 2\n(Burger &amp; Coffee)"
+                    android:textColor="@color/primary_blue"
+                    android:textSize="15sp"
+                    android:fontFamily="sans-serif-bold"
+                    app:icon="@drawable/ic_floor_badge"
+                    app:iconTint="@color/primary_blue"
                     app:iconGravity="top"
                     app:iconSize="36dp" />
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- Floor 3 Card -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="0dp"
                 android:layout_height="140dp"
                 android:layout_columnWeight="1"
                 android:layout_margin="8dp"
-                app:cardCornerRadius="24dp"
-                app:cardElevation="6dp">
+                app:cardCornerRadius="22dp"
+                app:cardElevation="6dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/border_subtle"
+                app:cardBackgroundColor="@color/bg_card">
+
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/floor3"
                     style="@style/Widget.Material3.Button.TextButton"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Floor 3"
-                    android:textColor="#003366"
-                    app:icon="@android:drawable/ic_menu_directions"
+                    android:text="Floor 3\n(Hot Pizza)"
+                    android:textColor="@color/primary_blue"
+                    android:textSize="15sp"
+                    android:fontFamily="sans-serif-bold"
+                    app:icon="@drawable/ic_floor_badge"
+                    app:iconTint="@color/primary_blue"
                     app:iconGravity="top"
                     app:iconSize="36dp" />
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- Floor 4 Card -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="0dp"
                 android:layout_height="140dp"
                 android:layout_columnWeight="1"
                 android:layout_margin="8dp"
-                app:cardCornerRadius="24dp"
-                app:cardElevation="6dp">
+                app:cardCornerRadius="22dp"
+                app:cardElevation="6dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/border_subtle"
+                app:cardBackgroundColor="@color/bg_card">
+
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/floor4"
                     style="@style/Widget.Material3.Button.TextButton"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Floor 4"
-                    android:textColor="#003366"
-                    app:icon="@android:drawable/ic_menu_directions"
+                    android:text="Floor 4\n(Gujarati Thali)"
+                    android:textColor="@color/primary_blue"
+                    android:textSize="15sp"
+                    android:fontFamily="sans-serif-bold"
+                    app:icon="@drawable/ic_floor_badge"
+                    app:iconTint="@color/primary_blue"
                     app:iconGravity="top"
                     app:iconSize="36dp" />
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- Floor 5 Card -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="0dp"
                 android:layout_height="140dp"
                 android:layout_columnWeight="1"
                 android:layout_margin="8dp"
-                app:cardCornerRadius="24dp"
-                app:cardElevation="6dp">
+                app:cardCornerRadius="22dp"
+                app:cardElevation="6dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/border_subtle"
+                app:cardBackgroundColor="@color/bg_card">
+
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/floor5"
                     style="@style/Widget.Material3.Button.TextButton"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Floor 5"
-                    android:textColor="#003366"
-                    app:icon="@android:drawable/ic_menu_directions"
+                    android:text="Floor 5\n(Crispy Dosa)"
+                    android:textColor="@color/primary_blue"
+                    android:textSize="15sp"
+                    android:fontFamily="sans-serif-bold"
+                    app:icon="@drawable/ic_floor_badge"
+                    app:iconTint="@color/primary_blue"
                     app:iconGravity="top"
                     app:iconSize="36dp" />
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- Floor 6 Card -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="0dp"
                 android:layout_height="140dp"
                 android:layout_columnWeight="1"
                 android:layout_margin="8dp"
-                app:cardCornerRadius="24dp"
-                app:cardElevation="6dp">
+                app:cardCornerRadius="22dp"
+                app:cardElevation="6dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/border_subtle"
+                app:cardBackgroundColor="@color/bg_card">
+
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/floor6"
                     style="@style/Widget.Material3.Button.TextButton"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Floor 6"
-                    android:textColor="#003366"
-                    app:icon="@android:drawable/ic_menu_directions"
+                    android:text="Floor 6\n(Chinese Noodles)"
+                    android:textColor="@color/primary_blue"
+                    android:textSize="15sp"
+                    android:fontFamily="sans-serif-bold"
+                    app:icon="@drawable/ic_floor_badge"
+                    app:iconTint="@color/primary_blue"
                     app:iconGravity="top"
                     app:iconSize="36dp" />
             </com.google.android.material.card.MaterialCardView>
 
         </GridLayout>
 
+        <!-- View Order History Action Button -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnOrderHistory"
             android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:layout_margin="24dp"
-            android:text="View Order History"
+            android:layout_height="56dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="16dp"
+            android:text="View My Order History"
             android:textAllCaps="false"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:backgroundTint="#003366"
+            android:textSize="15sp"
+            android:fontFamily="sans-serif-bold"
+            app:backgroundTint="@color/primary_blue"
             app:cornerRadius="16dp"
-            app:icon="@android:drawable/ic_menu_recent_history"
+            app:icon="@drawable/ic_cart_shopping"
             app:iconGravity="textStart"
-            app:iconPadding="12dp"
+            app:iconPadding="10dp"
             app:elevation="4dp" />
 
     </LinearLayout>

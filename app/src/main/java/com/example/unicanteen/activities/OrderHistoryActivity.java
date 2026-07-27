@@ -42,6 +42,7 @@ public class OrderHistoryActivity extends AppCompatActivity {
     private void initViews() {
         recyclerOrderHistory = findViewById(R.id.recyclerOrderHistory);
         recyclerOrderHistory.setLayoutManager(new LinearLayoutManager(this));
+        recyclerOrderHistory.setHasFixedSize(true);
 
         adapter = new OrderHistoryAdapter(this, orderList);
         recyclerOrderHistory.setAdapter(adapter);
@@ -59,7 +60,7 @@ public class OrderHistoryActivity extends AppCompatActivity {
 
         // Accessing orders specific to the logged-in user
         DatabaseReference ref = FirebaseDatabase.getInstance()
-                .getReference("orders")
+                .getReference("userOrders")
                 .child(uid);
 
         ref.addValueEventListener(new ValueEventListener() {

@@ -14,6 +14,7 @@ import com.example.unicanteen.R;
 import com.example.unicanteen.adapters.MenuAdapter;
 import com.example.unicanteen.models.AdminMenuItemModel;
 import com.example.unicanteen.models.MenuItemModel;
+import com.example.unicanteen.utils.ImageUtils;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -52,14 +53,16 @@ public class MenuActivity extends AppCompatActivity {
         tvFloorHeader.setText(floor + " Menu");
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setHasFixedSize(true);
         adapter = new MenuAdapter(this, menuList);
         recyclerView.setAdapter(adapter);
 
-        // 🔹 1️⃣ ADD DEFAULT ITEMS (YOUR EXISTING LOGIC)
+        // 🔹 1️⃣ ADD DEFAULT ITEMS (WITH FOOD IMAGES)
         addDefaultItems(floor);
 
-        // 🔹 2️⃣ LOAD ADMIN ITEMS FROM FIREBASE
+        // 🔹 2️⃣ LOAD ADMIN ITEMS FROM FIREBASE WITH REALTIME SYNC
         ref = FirebaseDatabase.getInstance().getReference("menuItems");
+        ref.keepSynced(true);
         loadAdminItems(floor);
 
         btnCart.setOnClickListener(v ->
@@ -76,7 +79,7 @@ public class MenuActivity extends AppCompatActivity {
         btnOrderHistory = findViewById(R.id.btnOrderHistory);
     }
 
-    // ================= DEFAULT MENU (UNCHANGED) =================
+    // ================= DEFAULT MENU =================
     private void addDefaultItems(String floor) {
 
         switch (floor) {
@@ -108,7 +111,7 @@ public class MenuActivity extends AppCompatActivity {
         }
     }
 
-    // ================= ADMIN ITEMS FROM FIREBASE =================
+    // ================= ADMIN ITEMS FROM FIREBASE (REALTIME SYNC) =================
     private void loadAdminItems(String floor) {
 
         ref.orderByChild("floor")
@@ -117,17 +120,23 @@ public class MenuActivity extends AppCompatActivity {
 
                     @Override
                     public void onDataChange(DataSnapshot snapshot) {
+                        // Reset list and re-populate default floor items so updates & deletes sync perfectly
+                        menuList.clear();
+                        addDefaultItems(floor);
 
                         for (DataSnapshot ds : snapshot.getChildren()) {
-
                             AdminMenuItemModel adminItem =
                                     ds.getValue(AdminMenuItemModel.class);
 
                             if (adminItem != null) {
-                                // 🔥 ADD ADMIN ITEM TO SAME LIST
                                 menuList.add(new MenuItemModel(
                                         adminItem.name,
-                                        adminItem.price
+                                        adminItem.price,
+                                        adminItem.getImageUrl(),
+                                        ImageUtils.getCategory(adminItem.name),
+                                        "Freshly prepared canteen item",
+                                        "4.8 ★",
+                                        true
                                 ));
                             }
                         }

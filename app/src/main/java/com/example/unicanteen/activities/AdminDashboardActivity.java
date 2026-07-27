@@ -54,11 +54,17 @@ public class AdminDashboardActivity extends AppCompatActivity {
 
         // Logout
         btnLogout.setOnClickListener(v -> {
+            // 🔥 Clear Admin session only on explicit logout
+            getSharedPreferences("ADMIN_SESSION", MODE_PRIVATE)
+                    .edit()
+                    .clear()
+                    .apply();
+
             FirebaseAuth.getInstance().signOut();
 
             Intent intent = new Intent(
                     AdminDashboardActivity.this,
-                    AdminLoginActivity.class);
+                    MainActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();

@@ -3,34 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F4F7FC">
+    android:background="@color/bg_light">
 
+    <!-- Top Header -->
     <LinearLayout
         android:id="@+id/locationHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#003366"
+        android:background="@drawable/bg_gradient_header"
         android:orientation="vertical"
         android:paddingHorizontal="24dp"
-        android:paddingTop="50dp"
-        android:paddingBottom="40dp"
-        android:elevation="12dp">
+        android:paddingTop="48dp"
+        android:paddingBottom="28dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="STEP 2 OF 3"
-            android:textColor="#B0BEC5"
-            android:textSize="12sp"
-            android:letterSpacing="0.15"
-            android:fontFamily="sans-serif-medium" />
+            android:text="STEP 1 OF 3 • DELIVERY DETAILS"
+            android:textColor="#CBD5E1"
+            android:textSize="11sp"
+            android:letterSpacing="0.14"
+            android:fontFamily="sans-serif-bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Delivery Details"
+            android:layout_marginTop="2dp"
+            android:text="Delivery Destination"
             android:textColor="#FFFFFF"
-            android:textSize="32sp"
+            android:textSize="28sp"
             android:fontFamily="sans-serif-black" />
     </LinearLayout>
 
@@ -45,62 +46,80 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="24dp">
+            android:padding="20dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Where should we deliver?"
-                android:textColor="#333333"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="16dp"/>
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Delivery Address / Lab No."
-                app:boxStrokeColor="#003366"
-                app:hintTextColor="#003366"
-                app:startIconDrawable="@android:drawable/ic_dialog_map"
-                app:startIconTint="#003366"
-                app:cornerRadius="16dp"
-                app:boxBackgroundColor="#FFFFFF">
+                app:cardCornerRadius="24dp"
+                app:cardElevation="6dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/border_subtle"
+                app:cardBackgroundColor="@color/bg_card">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edtLocation"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPostalAddress"
-                    android:textColor="#212121"
-                    android:padding="16dp" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:orientation="vertical"
+                    android:padding="24dp">
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:hint="Mobile Number"
-                app:boxStrokeColor="#003366"
-                app:hintTextColor="#003366"
-                app:startIconDrawable="@android:drawable/stat_sys_phone_call"
-                app:startIconTint="#003366"
-                app:counterEnabled="true"
-                app:counterMaxLength="10"
-                app:cornerRadius="16dp"
-                app:boxBackgroundColor="#FFFFFF">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Drop-off Details"
+                        android:textColor="@color/text_main"
+                        android:textSize="18sp"
+                        android:fontFamily="sans-serif-black"
+                        android:layout_marginBottom="16dp"/>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edtContact"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="phone"
-                    android:maxLength="10"
-                    android:textColor="#212121"
-                    android:padding="16dp" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Delivery Address / Floor / Room No."
+                        app:boxStrokeColor="@color/primary_blue"
+                        app:hintTextColor="@color/primary_blue"
+                        app:boxCornerRadiusTopStart="16dp"
+                        app:boxCornerRadiusTopEnd="16dp"
+                        app:boxCornerRadiusBottomStart="16dp"
+                        app:boxCornerRadiusBottomEnd="16dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtLocation"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPostalAddress"
+                            android:textColor="@color/text_main"
+                            android:paddingVertical="14dp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:hint="10-Digit Mobile Number"
+                        app:boxStrokeColor="@color/primary_blue"
+                        app:hintTextColor="@color/primary_blue"
+                        app:counterEnabled="true"
+                        app:counterMaxLength="10"
+                        app:boxCornerRadiusTopStart="16dp"
+                        app:boxCornerRadiusTopEnd="16dp"
+                        app:boxCornerRadiusBottomStart="16dp"
+                        app:boxCornerRadiusBottomEnd="16dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtContact"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="phone"
+                            android:maxLength="10"
+                            android:textColor="@color/text_main"
+                            android:paddingVertical="14dp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
     </ScrollView>
@@ -110,23 +129,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:padding="24dp"
-        android:background="#F4F7FC">
+        android:padding="20dp"
+        android:background="@color/bg_light">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnNext"
             android:layout_width="match_parent"
-            android:layout_height="65dp"
+            android:layout_height="56dp"
             android:text="Continue to Payment"
             android:textAllCaps="false"
-            android:textSize="18sp"
-            android:textStyle="bold"
+            android:textSize="16sp"
+            android:fontFamily="sans-serif-bold"
             app:cornerRadius="16dp"
-            app:backgroundTint="#003366"
-            app:elevation="8dp"
-            app:icon="@android:drawable/ic_media_play"
-            app:iconGravity="textEnd"
-            app:iconPadding="12dp" />
+            app:backgroundTint="@color/primary_blue"
+            app:elevation="4dp" />
     </LinearLayout>
 
 </RelativeLayout>

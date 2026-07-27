@@ -7,8 +7,17 @@
 
     <!-- ☎️ CALL USER (Admin dial feature) -->
     <uses-permission android:name="android.permission.CALL_PHONE"/>
+-
+    <!-- 📷 CAMERA & MEDIA PERMISSIONS -->
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32"/>
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
+
+    <!-- 📷 CAMERA HARDWARE FEATURE -->
+    <uses-feature android:name="android.hardware.camera.any" android:required="false" />
 
     <application
+        android:name=".UniCanteenApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -42,7 +51,6 @@
         <activity android:name=".activities.UserOrdersActivity" />
 
         <!-- 🔐 ADMIN ACTIVITIES -->
-        <activity android:name=".activities.AdminLoginActivity" />
         <activity android:name=".activities.AdminDashboardActivity" />
         <activity android:name=".activities.AdminOrdersActivity" />
         <activity android:name=".activities.AdminManageItemsActivity" />

@@ -3,12 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="16dp"
-    android:layout_marginVertical="8dp"
-    app:cardCornerRadius="20dp"
-    app:cardElevation="6dp"
-    app:strokeWidth="0dp"
-    app:cardBackgroundColor="#FFFFFF">
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginVertical="6dp"
+    app:cardCornerRadius="22dp"
+    app:cardElevation="4dp"
+    app:strokeWidth="1dp"
+    app:strokeColor="@color/border_subtle"
+    app:cardBackgroundColor="@color/bg_card">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,7 +17,7 @@
         android:orientation="vertical"
         android:padding="20dp">
 
-        <!-- Top Row -->
+        <!-- Top Row: Order ID & Status Badge -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -29,8 +30,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="sans-serif-black"
-                android:textColor="#003366"
-                android:textSize="16sp"
+                android:textColor="@color/primary_blue"
+                android:textSize="17sp"
                 android:maxLines="1"
                 android:ellipsize="end"
                 android:text="Order #123456789" />
@@ -40,30 +41,39 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:background="#E8F5E9"
-                android:paddingHorizontal="10dp"
-                android:paddingVertical="4dp"
+                android:background="@drawable/bg_status_pending"
+                android:paddingHorizontal="14dp"
+                android:paddingVertical="6dp"
                 android:text="Pending"
-                android:textColor="#2E7D32"
-                android:textSize="11sp"
-                android:textStyle="bold" />
+                android:textColor="@color/status_pending"
+                android:textSize="12sp"
+                android:fontFamily="sans-serif-bold" />
         </LinearLayout>
 
-        <!-- Items -->
+        <!-- Ordered Items Container with Food Images -->
+        <LinearLayout
+            android:id="@+id/layoutOrderItemsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="12dp" />
+
+        <!-- Items Text Summary Fallback -->
         <TextView
             android:id="@+id/txtOrderItems"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:textColor="#546E7A"
-            android:textSize="14sp"
+            android:layout_marginTop="6dp"
+            android:textColor="@color/text_sub"
+            android:textSize="13sp"
+            android:fontFamily="sans-serif-medium"
             android:text="Items Summary" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginVertical="12dp"
-            android:background="#F0F0F0" />
+            android:layout_marginVertical="14dp"
+            android:background="@color/border_subtle" />
 
         <!-- Total + Contact -->
         <LinearLayout
@@ -82,8 +92,8 @@
                     android:id="@+id/txtOrderTotal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#003366"
-                    android:textSize="18sp"
+                    android:textColor="@color/text_main"
+                    android:textSize="19sp"
                     android:fontFamily="sans-serif-black"
                     android:text="₹ 0" />
 
@@ -91,8 +101,9 @@
                     android:id="@+id/txtOrderDateTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#90A4AE"
-                    android:textSize="11sp"
+                    android:textColor="@color/text_muted"
+                    android:textSize="12sp"
+                    android:layout_marginTop="2dp"
                     android:text="Jan 27, 2026 • 08:14 PM" />
             </LinearLayout>
 
@@ -100,40 +111,44 @@
                 android:id="@+id/txtContact"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#333333"
+                android:textColor="@color/text_sub"
                 android:textSize="13sp"
                 android:fontFamily="sans-serif-medium"
                 android:text="📞 0000000000" />
         </LinearLayout>
 
-        <!-- 🔥 ACTION BUTTONS -->
+        <!-- Action Buttons -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="14dp"
             android:gravity="end">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnCallUser"
+                android:visibility="gone"
                 style="@style/Widget.Material3.Button.OutlinedButton"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="42dp"
                 android:text="Call User"
-                android:textAllCaps="false"
+                android:textColor="@color/primary_blue"
+                android:textSize="13sp"
+                android:fontFamily="sans-serif-bold"
+                app:strokeColor="@color/primary_blue"
                 app:cornerRadius="12dp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnCancelOrder"
                 style="@style/Widget.Material3.Button.TonalButton"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="42dp"
                 android:layout_marginStart="8dp"
                 android:text="Cancel Order"
-                android:textAllCaps="false"
-                android:textStyle="bold"
-                app:backgroundTint="#FFEBEE"
-                android:textColor="#D32F2F"
+                android:textSize="13sp"
+                android:fontFamily="sans-serif-bold"
+                app:backgroundTint="@color/error_red_bg"
+                android:textColor="@color/error_red"
                 app:cornerRadius="12dp" />
         </LinearLayout>
 

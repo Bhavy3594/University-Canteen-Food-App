@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center_horizontal"
+    android:background="@drawable/bg_dialog_rounded">
+
+    <!-- Warning Icon Badge -->
+    <FrameLayout
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:background="@drawable/bg_warning_badge"
+        android:layout_marginBottom="16dp">
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_warning_cancel"
+            android:contentDescription="Warning Icon" />
+    </FrameLayout>
+
+    <!-- Dialog Title -->
+    <TextView
+        android:id="@+id/txtDialogTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel Order?"
+        android:textColor="@color/text_main"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif-black"
+        android:textAlignment="center"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Dialog Message Body -->
+    <TextView
+        android:id="@+id/txtDialogMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Are you sure you want to cancel this order?\nThis action cannot be undone."
+        android:textColor="@color/text_sub"
+        android:textSize="14sp"
+        android:lineSpacingExtra="3dp"
+        android:fontFamily="sans-serif"
+        android:textAlignment="center"
+        android:layout_marginBottom="24dp"/>
+
+    <!-- Action Buttons Row -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <!-- Keep Order (Secondary / Neutral) -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnKeepOrder"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="6dp"
+            android:text="Keep Order"
+            android:textColor="@color/text_sub"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif-medium"
+            android:textAllCaps="false"
+            app:backgroundTint="@color/bg_input"
+            app:cornerRadius="12dp"
+            app:strokeColor="@color/border_subtle"
+            app:strokeWidth="1dp" />
+
+        <!-- Cancel Order (Primary Destructive) -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnConfirmCancel"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:layout_marginStart="6dp"
+            android:text="Yes, Cancel"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif-bold"
+            android:textAllCaps="false"
+            app:backgroundTint="@color/error_red"
+            app:cornerRadius="12dp"
+            app:elevation="2dp" />
+    </LinearLayout>
+
+</LinearLayout>

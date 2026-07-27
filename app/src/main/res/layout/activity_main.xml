@@ -4,12 +4,13 @@
     android:id="@+id/loginRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F4F7FC">
+    android:background="@color/bg_light">
 
+    <!-- Header Gradient Banner -->
     <View
         android:layout_width="match_parent"
         android:layout_height="320dp"
-        android:background="#003366" />
+        android:background="@drawable/bg_gradient_header" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -21,33 +22,57 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical"
-            android:padding="24dp">
+            android:paddingHorizontal="24dp"
+            android:paddingTop="48dp"
+            android:paddingBottom="24dp">
+
+            <!-- App Logo Badge & Brand Title -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="12dp"
+                app:strokeWidth="1.5dp"
+                app:strokeColor="#3310B981"
+                app:cardBackgroundColor="#161E2E">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="6dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_canteen_logo" />
+            </com.google.android.material.card.MaterialCardView>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:fontFamily="sans-serif-black"
                 android:text="UniCanteen"
                 android:textColor="#FFFFFF"
-                android:textSize="36sp"
-                android:textStyle="bold" />
+                android:textSize="34sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="32dp"
-                android:text="Fast Food. Easy Ordering."
-                android:textColor="#B0BEC5"
-                android:textSize="14sp"
-                android:letterSpacing="0.1" />
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="28dp"
+                android:letterSpacing="0.08"
+                android:text="Smart Campus Dining &amp; Express Delivery"
+                android:textColor="#CBD5E1"
+                android:textSize="13sp"
+                android:fontFamily="sans-serif-medium" />
 
+            <!-- Login Card Container -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="28dp"
                 app:cardElevation="12dp"
-                app:strokeWidth="0dp"
-                app:cardBackgroundColor="#FFFFFF">
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/border_subtle"
+                app:cardBackgroundColor="@color/bg_card">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -59,72 +84,79 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Welcome Back"
-                        android:textColor="#333333"
+                        android:textColor="@color/text_main"
                         android:textSize="22sp"
-                        android:fontFamily="sans-serif-medium" />
+                        android:fontFamily="sans-serif-black" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Sign in to your account"
-                        android:textColor="#777777"
-                        android:textSize="14sp"
+                        android:text="Sign in to order your campus meal"
+                        android:textColor="@color/text_sub"
+                        android:textSize="13sp"
+                        android:layout_marginTop="4dp"
                         android:layout_marginBottom="24dp" />
 
+                    <!-- Email Input -->
                     <com.google.android.material.textfield.TextInputLayout
                         style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Email Address"
-                        app:boxStrokeColor="#003366"
-                        app:hintTextColor="#003366"
-                        app:startIconDrawable="@android:drawable/ic_dialog_email"
-                        app:startIconTint="#003366"
-                        app:cornerRadius="16dp">
+                        app:boxStrokeColor="@color/primary_blue"
+                        app:hintTextColor="@color/primary_blue"
+                        app:boxCornerRadiusTopStart="16dp"
+                        app:boxCornerRadiusTopEnd="16dp"
+                        app:boxCornerRadiusBottomStart="16dp"
+                        app:boxCornerRadiusBottomEnd="16dp">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/etEmail"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="textEmailAddress"
-                            android:textColor="#212121"
-                            android:padding="16dp" />
+                            android:textColor="@color/text_main"
+                            android:paddingVertical="14dp" />
                     </com.google.android.material.textfield.TextInputLayout>
 
+                    <!-- Password Input -->
                     <com.google.android.material.textfield.TextInputLayout
                         style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:hint="Password"
-                        app:boxStrokeColor="#003366"
-                        app:hintTextColor="#003366"
+                        app:boxStrokeColor="@color/primary_blue"
+                        app:hintTextColor="@color/primary_blue"
                         app:passwordToggleEnabled="true"
-                        app:startIconDrawable="@android:drawable/ic_lock_idle_lock"
-                        app:startIconTint="#003366"
-                        app:cornerRadius="16dp">
+                        app:boxCornerRadiusTopStart="16dp"
+                        app:boxCornerRadiusTopEnd="16dp"
+                        app:boxCornerRadiusBottomStart="16dp"
+                        app:boxCornerRadiusBottomEnd="16dp">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/etPassword"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="textPassword"
-                            android:textColor="#212121"
-                            android:padding="16dp" />
+                            android:textColor="@color/text_main"
+                            android:paddingVertical="14dp" />
                     </com.google.android.material.textfield.TextInputLayout>
 
+                    <!-- Login Button -->
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnLogin"
                         android:layout_width="match_parent"
-                        android:layout_height="62dp"
-                        android:layout_marginTop="32dp"
-                        android:text="LOGIN"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        app:backgroundTint="#003366"
+                        android:layout_height="56dp"
+                        android:layout_marginTop="28dp"
+                        android:text="SIGN IN"
+                        android:textSize="15sp"
+                        android:fontFamily="sans-serif-bold"
+                        app:backgroundTint="@color/primary_blue"
                         app:cornerRadius="16dp"
-                        app:elevation="6dp" />
+                        app:elevation="4dp" />
 
+                    <!-- Register Link -->
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/tvRegister"
                         style="@style/Widget.Material3.Button.TextButton"
@@ -132,10 +164,11 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="16dp"
-                        android:text="New user? Register here"
+                        android:text="New user? Register account"
                         android:textAllCaps="false"
-                        android:textColor="#003366"
-                        android:textSize="14sp" />
+                        android:textColor="@color/primary_blue"
+                        android:textSize="14sp"
+                        android:fontFamily="sans-serif-bold" />
 
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>

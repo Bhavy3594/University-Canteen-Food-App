@@ -5,21 +5,35 @@
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="16dp"
     android:layout_marginVertical="8dp"
-    app:cardCornerRadius="16dp"
+    app:cardCornerRadius="20dp"
     app:cardElevation="4dp"
-    app:strokeWidth="0dp"
-    app:cardBackgroundColor="#FFFFFF">
+    app:strokeWidth="1dp"
+    app:strokeColor="@color/border_subtle"
+    app:cardBackgroundColor="@color/bg_card">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp">
 
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgItem"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="16dp"
+            android:scaleType="centerCrop"
+            app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Medium"
+            android:background="@color/bg_input"
+            android:src="@drawable/ic_food_item" />
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_alignParentStart="true"
+            android:layout_toEndOf="@id/imgItem"
+            android:layout_centerVertical="true"
             android:layout_toStartOf="@+id/txtItemQty">
 
             <TextView
@@ -27,8 +41,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Item Name"
-                android:textColor="#003366"
-                android:textSize="18sp"
+                android:textColor="@color/text_main"
+                android:textSize="17sp"
                 android:fontFamily="sans-serif-black" />
 
             <TextView
@@ -37,9 +51,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="₹ 0"
-                android:textColor="#546E7A"
+                android:textColor="@color/primary_blue"
                 android:textSize="15sp"
-                android:fontFamily="sans-serif-medium" />
+                android:fontFamily="sans-serif-bold" />
         </LinearLayout>
 
         <TextView
@@ -48,14 +62,13 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:background="#E3F2FD"
-            android:paddingHorizontal="12dp"
-            android:paddingVertical="6dp"
+            android:background="@color/primary_blue_light"
+            android:paddingHorizontal="14dp"
+            android:paddingVertical="8dp"
             android:text="Qty: 1"
-            android:textColor="#003366"
+            android:textColor="@color/primary_blue"
             android:textSize="14sp"
-            android:textStyle="bold"
-            android:fontFamily="sans-serif-medium" />
+            android:fontFamily="sans-serif-bold" />
 
     </RelativeLayout>
 </com.google.android.material.card.MaterialCardView>

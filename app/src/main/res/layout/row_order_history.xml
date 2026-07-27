@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="16dp"
-    android:layout_marginVertical="10dp"
-    app:cardCornerRadius="24dp"
-    app:cardElevation="8dp"
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginVertical="6dp"
+    app:cardCornerRadius="22dp"
+    app:cardElevation="4dp"
     app:strokeWidth="1dp"
-    app:strokeColor="#EEF2F6"
-    app:cardBackgroundColor="#FFFFFF">
+    app:strokeColor="@color/border_subtle"
+    app:cardBackgroundColor="@color/bg_card">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -32,9 +32,8 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-black"
                     android:text="Order #12345"
-                    android:textColor="#003366"
-                    android:textSize="18sp"
-                    android:letterSpacing="-0.02" />
+                    android:textColor="@color/primary_blue"
+                    android:textSize="17sp" />
 
                 <TextView
                     android:id="@+id/txtOrderDateTime"
@@ -43,7 +42,7 @@
                     android:layout_marginTop="2dp"
                     android:fontFamily="sans-serif-medium"
                     android:text="27 Jan 2026, 08:15 PM"
-                    android:textColor="#90A4AE"
+                    android:textColor="@color/text_muted"
                     android:textSize="12sp" />
             </LinearLayout>
 
@@ -53,21 +52,21 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:background="@drawable/bg_status_badge"
+                android:background="@drawable/bg_status_ready"
                 android:fontFamily="sans-serif-bold"
                 android:paddingHorizontal="14dp"
                 android:paddingVertical="6dp"
                 android:text="DELIVERED"
-                android:textColor="#2E7D32"
-                android:textSize="11sp"
-                android:letterSpacing="0.05" />
+                android:textColor="#059669"
+                android:textSize="12sp"
+                android:letterSpacing="0.04" />
         </RelativeLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginVertical="16dp"
-            android:background="#F0F0F0" />
+            android:layout_marginVertical="14dp"
+            android:background="@color/border_subtle" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -84,8 +83,8 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@android:drawable/ic_menu_agenda"
-                    app:tint="#B0BEC5"
+                    android:src="@drawable/ic_food_item"
+                    app:tint="@color/text_muted"
                     android:layout_marginEnd="8dp" />
 
                 <TextView
@@ -94,7 +93,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-medium"
                     android:text="1x Pizza, 2x Coke"
-                    android:textColor="#455A64"
+                    android:textColor="@color/text_sub"
                     android:textSize="14sp"
                     android:maxLines="1"
                     android:ellipsize="end" />
@@ -114,8 +113,8 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-black"
                     android:text="₹ 240.00"
-                    android:textColor="#003366"
-                    android:textSize="20sp" />
+                    android:textColor="@color/text_main"
+                    android:textSize="19sp" />
             </LinearLayout>
         </RelativeLayout>
 

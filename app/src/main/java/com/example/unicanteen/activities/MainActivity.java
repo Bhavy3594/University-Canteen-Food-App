@@ -48,10 +48,37 @@ public class MainActivity extends AppCompatActivity {
 
             // 🔥 ADMIN LOGIN CHECK FIRST
             if (email.equals(ADMIN_EMAIL) && password.equals(ADMIN_PASSWORD)) {
+                // Save admin session flag
+                getSharedPreferences("ADMIN_SESSION", MODE_PRIVATE)
+                        .edit()
+                        .putBoolean("IS_ADMIN_LOGGED_IN", true)
+                        .apply();
 
-                Toast.makeText(this, "Admin Login Successful", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(MainActivity.this, AdminDashboardActivity.class));
-                finish();
+                // We MUST authenticate with Firebase so Storage Rules (request.auth != null) pass!
+                auth.signInWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(this, "Admin Login Successful", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(MainActivity.this, AdminDashboardActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(intent);
+                                finish();
+                            } else {
+                                // Auto-register the admin so they have a valid Auth Token
+                                auth.createUserWithEmailAndPassword(email, password)
+                                        .addOnCompleteListener(regTask -> {
+                                            if (regTask.isSuccessful()) {
+                                                Toast.makeText(this, "Admin Auth Registered & Logged In", Toast.LENGTH_SHORT).show();
+                                                Intent intent = new Intent(MainActivity.this, AdminDashboardActivity.class);
+                                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                startActivity(intent);
+                                                finish();
+                                            } else {
+                                                Toast.makeText(this, "Admin Auth Failed: " + regTask.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                            }
+                                        });
+                            }
+                        });
                 return;
             }
 
@@ -60,8 +87,16 @@ public class MainActivity extends AppCompatActivity {
                     .addOnCompleteListener(task -> {
 
                         if (task.isSuccessful()) {
+                            // Clear any admin session flag for standard users
+                            getSharedPreferences("ADMIN_SESSION", MODE_PRIVATE)
+                                    .edit()
+                                    .clear()
+                                    .apply();
+
                             Toast.makeText(this, "User Login Successful", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(MainActivity.this, DashboardActivity.class));
+                            Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
                             finish();
                         } else {
                             Toast.makeText(this,

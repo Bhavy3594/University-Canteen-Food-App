@@ -1,26 +1,32 @@
 package com.example.unicanteen.utils;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class OrderManager {
 
-    // ✅ CANCEL ORDER (Maintaining your exact Firebase path and logic)
+    // ✅ CANCEL ORDER (Fixed: Updates both user history and admin master orders)
     public static void cancelOrder(String orderId) {
 
-        // Logic preserved: Getting current user ID for the path
-        if (FirebaseAuth.getInstance().getCurrentUser() == null) return;
+        if (orderId == null || orderId.isEmpty()) return;
 
-        String uid = FirebaseAuth.getInstance()
-                .getCurrentUser()
-                .getUid();
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
 
-        // Directly updating the "status" child to "Cancelled"
-        FirebaseDatabase.getInstance()
-                .getReference("orders")
-                .child(uid)
+        // 1. Update global orders tree for Admin
+        rootRef.child("orders")
                 .child(orderId)
                 .child("status")
                 .setValue("Cancelled");
+
+        // 2. Update user's personal orders tree
+        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+            String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            rootRef.child("userOrders")
+                    .child(uid)
+                    .child(orderId)
+                    .child("status")
+                    .setValue("Cancelled");
+        }
     }
 }

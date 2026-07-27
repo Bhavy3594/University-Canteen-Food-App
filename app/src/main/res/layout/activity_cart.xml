@@ -3,35 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F4F7FC">
+    android:background="@color/bg_light">
 
+    <!-- Top Header -->
     <LinearLayout
         android:id="@+id/cartHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#003366"
+        android:background="@drawable/bg_gradient_header"
         android:orientation="vertical"
         android:paddingHorizontal="24dp"
-        android:paddingTop="45dp"
-        android:paddingBottom="30dp"
-        android:elevation="10dp">
+        android:paddingTop="48dp"
+        android:paddingBottom="28dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="CHECKOUT"
-            android:textColor="#B0BEC5"
-            android:textSize="12sp"
-            android:letterSpacing="0.15"
-            android:textAllCaps="true"
-            android:fontFamily="sans-serif-medium"/>
+            android:text="MY ORDER CART"
+            android:textColor="#CBD5E1"
+            android:textSize="11sp"
+            android:letterSpacing="0.14"
+            android:fontFamily="sans-serif-bold"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Your Cart"
+            android:layout_marginTop="2dp"
+            android:text="Review &amp; Checkout"
             android:textColor="#FFFFFF"
-            android:textSize="30sp"
+            android:textSize="28sp"
             android:fontFamily="sans-serif-black" />
     </LinearLayout>
 
@@ -42,52 +42,52 @@
         android:layout_above="@id/bottomSummaryCard"
         android:layout_below="@id/cartHeader"
         android:clipToPadding="false"
-        android:padding="16dp"
+        android:padding="12dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
+    <!-- Bottom Summary & Order Action Sheet Card -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/bottomSummaryCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        app:cardCornerRadius="32dp"
+        app:cardCornerRadius="28dp"
         app:cardElevation="20dp"
-        android:layout_marginBottom="-15dp"
-        app:strokeWidth="0dp"
-        app:cardBackgroundColor="#FFFFFF">
+        app:strokeWidth="1dp"
+        app:strokeColor="@color/border_subtle"
+        app:cardBackgroundColor="@color/bg_card">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingHorizontal="24dp"
-            android:paddingTop="28dp"
-            android:paddingBottom="45dp">
+            android:paddingHorizontal="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:layout_marginBottom="24dp">
+                android:layout_marginBottom="16dp">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Total Payable Amount"
-                    android:textColor="#78909C"
+                    android:text="Total Amount"
+                    android:textColor="@color/text_sub"
                     android:textSize="15sp"
-                    android:fontFamily="sans-serif-medium"/>
+                    android:fontFamily="sans-serif-bold"/>
 
                 <TextView
                     android:id="@+id/txtTotalAmount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Total Amount: ₹15"
-                    android:textColor="#003366"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
+                    android:text="₹0"
+                    android:textColor="@color/primary_blue"
+                    android:textSize="24sp"
                     android:fontFamily="sans-serif-black"/>
             </LinearLayout>
 
@@ -95,36 +95,46 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:weightSum="3">
+                android:gravity="center_vertical">
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnClearCart"
                     style="@style/Widget.Material3.Button.TonalButton"
                     android:layout_width="0dp"
-                    android:layout_height="60dp"
-                    android:layout_weight="1"
+                    android:layout_height="52dp"
+                    android:layout_weight="0.85"
                     android:text="Clear"
-                    android:textColor="#D32F2F"
-                    app:backgroundTint="#FFEBEE"
+                    android:textColor="@color/error_red"
+                    app:backgroundTint="@color/error_red_bg"
                     android:textAllCaps="false"
+                    android:textSize="14sp"
+                    android:fontFamily="sans-serif-bold"
                     app:cornerRadius="16dp" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnPlaceOrder"
                     android:layout_width="0dp"
-                    android:layout_height="60dp"
-                    android:layout_weight="2"
-                    android:layout_marginStart="12dp"
-                    android:text="Place Order"
+                    android:layout_height="52dp"
+                    android:layout_weight="2.15"
+                    android:layout_marginStart="10dp"
+                    android:text="Proceed to Location"
+                    android:textColor="#FFFFFF"
                     android:textAllCaps="false"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:backgroundTint="#003366"
+                    android:textSize="14sp"
+                    android:fontFamily="sans-serif-bold"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    app:autoSizeTextType="uniform"
+                    app:autoSizeMinTextSize="11sp"
+                    app:autoSizeMaxTextSize="14sp"
+                    app:autoSizeStepGranularity="1sp"
+                    app:backgroundTint="@color/primary_blue"
                     app:cornerRadius="16dp"
                     app:elevation="4dp"
-                    app:icon="@android:drawable/ic_menu_send"
+                    app:icon="@drawable/ic_location_pin"
+                    app:iconTint="#FFFFFF"
                     app:iconGravity="textStart"
-                    app:iconPadding="8dp"/>
+                    app:iconPadding="6dp"/>
             </LinearLayout>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>

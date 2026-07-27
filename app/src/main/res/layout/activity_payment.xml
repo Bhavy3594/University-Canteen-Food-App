@@ -3,34 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F4F7FC">
+    android:background="@color/bg_light">
 
+    <!-- Top Header -->
     <LinearLayout
         android:id="@+id/paymentHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#003366"
+        android:background="@drawable/bg_gradient_header"
         android:orientation="vertical"
         android:paddingHorizontal="24dp"
-        android:paddingTop="50dp"
-        android:paddingBottom="40dp"
-        android:elevation="12dp">
+        android:paddingTop="48dp"
+        android:paddingBottom="28dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="FINAL STEP"
-            android:textColor="#B0BEC5"
-            android:textSize="12sp"
-            android:letterSpacing="0.15"
-            android:fontFamily="sans-serif-medium" />
+            android:text="STEP 2 OF 3 • PAYMENT METHOD"
+            android:textColor="#CBD5E1"
+            android:textSize="11sp"
+            android:letterSpacing="0.14"
+            android:fontFamily="sans-serif-bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
             android:text="Payment Method"
             android:textColor="#FFFFFF"
-            android:textSize="32sp"
+            android:textSize="28sp"
             android:fontFamily="sans-serif-black" />
     </LinearLayout>
 
@@ -39,25 +40,25 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/paymentHeader"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:padding="20dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Select how you'd like to pay"
-            android:textColor="#333333"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="20dp"/>
+            android:text="Select payment option"
+            android:textColor="@color/text_main"
+            android:textSize="18sp"
+            android:fontFamily="sans-serif-black"
+            android:layout_marginBottom="16dp"/>
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="4dp"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="6dp"
             app:strokeWidth="1dp"
-            app:strokeColor="#E0E0E0"
-            app:cardBackgroundColor="#FFFFFF">
+            app:strokeColor="@color/border_subtle"
+            app:cardBackgroundColor="@color/bg_card">
 
             <RadioGroup
                 android:id="@+id/radioGroup"
@@ -68,28 +69,30 @@
                 <RadioButton
                     android:id="@+id/rbCOD"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:text="Cash on Delivery"
-                    android:textSize="17sp"
+                    android:layout_height="64dp"
+                    android:text="Cash on Delivery (Pay at Canteen Counter)"
+                    android:textSize="15sp"
+                    android:fontFamily="sans-serif-medium"
                     android:paddingStart="12dp"
-                    android:buttonTint="#003366"
-                    android:textColor="#333333" />
+                    android:buttonTint="@color/primary_blue"
+                    android:textColor="@color/text_main" />
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="#F0F0F0"
+                    android:background="@color/border_subtle"
                     android:layout_marginHorizontal="12dp"/>
 
                 <RadioButton
                     android:id="@+id/rbUPI"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:text="UPI / Online Payment"
-                    android:textSize="17sp"
+                    android:layout_height="64dp"
+                    android:text="UPI / Instant Digital Payment"
+                    android:textSize="15sp"
+                    android:fontFamily="sans-serif-medium"
                     android:paddingStart="12dp"
-                    android:buttonTint="#003366"
-                    android:textColor="#333333" />
+                    android:buttonTint="@color/primary_blue"
+                    android:textColor="@color/text_main" />
             </RadioGroup>
         </com.google.android.material.card.MaterialCardView>
 
@@ -99,23 +102,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:padding="24dp"
-        android:background="#F4F7FC">
+        android:padding="20dp"
+        android:background="@color/bg_light">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnConfirm"
             android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:text="Confirm Order"
+            android:layout_height="56dp"
+            android:text="Continue to Order Summary"
             android:textAllCaps="false"
-            android:textSize="18sp"
-            android:textStyle="bold"
+            android:textSize="16sp"
+            android:fontFamily="sans-serif-bold"
             app:cornerRadius="16dp"
-            app:backgroundTint="#003366"
-            app:elevation="8dp"
-            app:icon="@android:drawable/checkbox_on_background"
-            app:iconGravity="textStart"
-            app:iconPadding="12dp" />
+            app:backgroundTint="@color/primary_blue"
+            app:elevation="4dp" />
     </LinearLayout>
 
 </RelativeLayout>
