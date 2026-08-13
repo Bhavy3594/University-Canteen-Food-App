@@ -80,7 +80,7 @@ University-Canteen-Food-App/
 ### Steps
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/Bhavy3594/University-Canteen-Food-App.git
+   git clone https://github.com/BhavyAtkotiya/University-Canteen-Food-App.git
    ```
 2. **Configure Firebase Credentials:**
    - Copy `app/google-services.json.example` to `app/google-services.json`.
