@@ -26,6 +26,9 @@ captures/
 .externalNativeBuild/
 .cxx/
 
+# Sensitive API credentials
+app/google-services.json
+
 # OS generated files
 .DS_Store
 Thumbs.db
